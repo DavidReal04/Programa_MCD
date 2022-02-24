@@ -60,18 +60,23 @@ public class Controller {
     }
 
     public void pedirNumeros(){
-        vista.mostrarMensaje("Ingrese el primer número entero positivo");
-        do {
-            num1=vista.leerNum();
-        } while (num1<=1);
-        vista.mostrarMensaje("Ingrese el segúndo número entero positivo");
-        do {
-            num2=vista.leerNum();
-        } while (num2<=1);
-        if(num1 < num2) {
-            num1=num1+num2;
-            num2=num1-num2;
-            num1=num1-num2;
+        try {
+            do {
+                vista.mostrarMensaje("Ingrese el primer número entero positivo");
+                num1=vista.leerNum();
+            } while (num1<=1);
+
+            do {
+                vista.mostrarMensaje("Ingrese el segúndo número entero positivo");
+                num2=vista.leerNum();
+            } while (num2<=1);
+            if(num1 < num2) {
+                num1=num1+num2;
+                num2=num1-num2;
+                num1=num1-num2;
+            }
+        } catch (InputMismatchException e) {
+            vista.mostrarMensaje("Ingreso erroneo\nHasta Pronto");
         }
     }
 
